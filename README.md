@@ -1,18 +1,24 @@
 # Music Info Library
 
 # Contributors
+
 - Luis Bazan Rios
 
 ## To Do's
+
 ### Server
-- [X] Listar archivos en el directorio de almacenamiento.
-- [X] Crear un objeto SongData para cada archivo en el directorio. 
-- [X] Hacer que registre bien los autores y la duracion del archivo mp3.
-- [X] Hacer que la api devuelva jsons para las canciones que tenga listadas (/api/list)
-- [X] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/get?file=fileNameHere)
+
+- [x] Listar archivos en el directorio de almacenamiento.
+- [x] Crear un objeto SongData para cada archivo en el directorio.
+- [x] Hacer que registre bien los autores y la duracion del archivo mp3.
+- [x] Hacer que la api devuelva jsons para las canciones que tenga listadas (/api/list)
+- [x] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/get?file=fileNameHere)
 
 ### Client
-- [ ] Hacer los contextos de react para poder reproducir la musica
+
+- [x] Preparar el entorno de desarrollo de la app
+- [x] Instalar dependencias, tailwindcss, icons, react etc.
+- [x] Hacer los contextos de react para poder reproducir la musica
 - [ ] Historial de reproduccion para poder usar el modo aleatorio correctamente
 - [ ] Hacer el panel de reproduccion
   - [ ] Que muestre la data de la cancion que se esta reproduciendo
