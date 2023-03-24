@@ -4,21 +4,19 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pe.edu.utp.Main;
 import pe.edu.utp.models.api.ApiMessage;
-import pe.edu.utp.models.SongData;
 import pe.edu.utp.models.api.ListSongs;
 
-import javax.swing.*;
 import java.io.File;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class APIController {
     @GetMapping(value = "/api")
     public ApiMessage apiWelcome() {
