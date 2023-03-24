@@ -1,5 +1,6 @@
-package pe.edu.utp.instances;
+package pe.edu.utp.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
@@ -12,6 +13,7 @@ import org.jaudiotagger.tag.TagException;
 import java.io.File;
 import java.io.IOException;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SongData {
     private String fileName;
     private String title;

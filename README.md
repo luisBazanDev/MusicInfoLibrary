@@ -8,8 +8,8 @@
 - [X] Listar archivos en el directorio de almacenamiento.
 - [X] Crear un objeto SongData para cada archivo en el directorio. 
 - [X] Hacer que registre bien los autores y la duracion del archivo mp3.
-- [ ] Hacer que la api devuelva jsons para las canciones que tenga listadas
-- [ ] Exponer una ruta con la carpeta que almacena los archivos mp3
+- [X] Hacer que la api devuelva jsons para las canciones que tenga listadas (/api/list)
+- [X] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/get?file=fileNameHere)
 
 ### Client
 - [ ] Hacer los contextos de react para poder reproducir la musica

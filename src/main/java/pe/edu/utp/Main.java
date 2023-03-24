@@ -2,8 +2,7 @@ package pe.edu.utp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import pe.edu.utp.controllers.APIController;
-import pe.edu.utp.instances.SongData;
+import pe.edu.utp.models.SongData;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,5 +27,9 @@ public class Main {
             if (songData != null) songs.add(songData);
         }
         System.out.println(String.format("Register %s songs.", songs.size()));
+    }
+
+    public static List<SongData> getSongs() {
+        return songs;
     }
 }
