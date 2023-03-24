@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="db53ec06-611c-4b01-8c1a-5aa0263ef779" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/utp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/utp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/utp/utils/MP3Reader.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +35,9 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="corretto-17" />
+  </component>
   <component name="ProjectId" id="2NRMYrpa8xeF8ZZqAjg1PJhZfdX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -43,11 +47,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Maven.MusicInfoLibrary [clean,install]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="pe.edu.utp.Main" />
       <module name="MusicInfoLibrary" />
       <extension name="coverage">
@@ -60,6 +67,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MusicInfoLibrary [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Maven.MusicInfoLibrary [clean,install]" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
