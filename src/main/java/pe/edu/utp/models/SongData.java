@@ -1,17 +1,12 @@
 package pe.edu.utp.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.exceptions.CannotReadException;
-import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
-import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagException;
+import com.mpatric.mp3agic.*;
+import pe.edu.utp.Main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SongData {
@@ -21,14 +16,17 @@ public class SongData {
     private String album;
     private String year;
     private Long length;
+    private String imgId;
 
-    public SongData(File file, String title, String artists, String album, String year, Long length) {
+    public SongData(File file, String title, String artists, String album, String year, Long length, byte[] image) {
         this.fileName = file.getName();
         this.title = title;
         this.artists = artists.split("/");
         this.album = album;
         this.year = year;
         this.length = length;
+        this.imgId = UUID.randomUUID().toString();
+        Main.getImages().put(this.imgId, image);
     }
 
     public String getFileName() {
@@ -55,17 +53,28 @@ public class SongData {
         return length;
     }
 
+    public String getImgId() {
+        return imgId;
+    }
+
     public static SongData BuildSongData(File file) {
         try {
-            AudioFile audioFile = AudioFileIO.read(file);
-            Tag tag = audioFile.getTag();
-            String title = tag.getFirst(FieldKey.TITLE);
-            String artists = tag.getFirst(FieldKey.ARTIST);
-            String album = tag.getFirst(FieldKey.ALBUM);
-            String year = tag.getFirst(FieldKey.YEAR);
-            long length = audioFile.getAudioHeader().getTrackLength();
-            return new SongData(file, title, artists, album, year, length);
-        } catch (TagException | CannotReadException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {
+            Mp3File mp3file = new Mp3File(file);
+            ID3v2 id3v2Tag;
+            if (mp3file.hasId3v2Tag()) {
+                id3v2Tag =  mp3file.getId3v2Tag();
+            } else return null;
+            byte[] img = null;
+            if (id3v2Tag.getAlbumImage() != null) {
+                img = id3v2Tag.getAlbumImage();
+            }
+            String title = id3v2Tag.getTitle();
+            String artists = id3v2Tag.getArtist();
+            String album = id3v2Tag.getAlbum();
+            String year = id3v2Tag.getYear();
+            long length = mp3file.getLengthInSeconds();
+            return new SongData(file, title, artists, album, year, length, img);
+        } catch (IOException | InvalidDataException | UnsupportedTagException e) {
             System.out.println("Error on build song data for: " + file.getPath());
         }
         return null;

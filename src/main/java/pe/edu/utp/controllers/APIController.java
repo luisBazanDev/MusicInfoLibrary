@@ -1,5 +1,6 @@
 package pe.edu.utp.controllers;
 
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pe.edu.utp.Main;
+import pe.edu.utp.models.SongData;
 import pe.edu.utp.models.api.ApiMessage;
 import pe.edu.utp.models.api.ListSongs;
 
@@ -33,7 +35,7 @@ public class APIController {
         return new ApiMessage("Not Found");
     }
 
-    @GetMapping(value = "/api/get")
+    @GetMapping(value = "/api/song")
     public ResponseEntity<Resource> getSong(@RequestParam(name = "file") String fileName) {
         File file = Paths.get(Main.mp3Directory, fileName).toFile();
 
@@ -42,5 +44,17 @@ public class APIController {
         return ResponseEntity.ok()
                 .header("Content-Disposition", "attachment; filename=" + fileName)
                 .body(new FileSystemResource(file));
+    }
+
+    @GetMapping(value = "/api/image")
+    public ResponseEntity<ByteArrayResource> getImage(@RequestParam(name = "id") String imageId) {
+        byte[] imageData = Main.getImages().get(imageId);
+
+        if (imageData == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok()
+                .contentLength(imageData.length)
+                .header("Content-type", "image/jpeg")
+                .body(new ByteArrayResource(imageData));
     }
 }

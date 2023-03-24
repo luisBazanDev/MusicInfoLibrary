@@ -12,7 +12,8 @@
 - [x] Crear un objeto SongData para cada archivo en el directorio.
 - [x] Hacer que registre bien los autores y la duracion del archivo mp3.
 - [x] Hacer que la api devuelva jsons para las canciones que tenga listadas (/api/list)
-- [x] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/get?file=fileNameHere)
+- [x] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/song?name=fileNameHere)
+- [x] Exponer una ruta con las imagenes de los archivos almacenados (/api/image?id=imageId)
 
 ### Client
 

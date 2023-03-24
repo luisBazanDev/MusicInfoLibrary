@@ -6,12 +6,14 @@ import pe.edu.utp.models.SongData;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @SpringBootApplication
 public class Main {
     public static String mp3Directory = "C:\\Users\\luisb\\Music\\music-test";
     private static List<SongData> songs = new ArrayList<>();
+    private static HashMap<String, byte[]> images = new HashMap<>();
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -31,5 +33,9 @@ public class Main {
 
     public static List<SongData> getSongs() {
         return songs;
+    }
+
+    public static HashMap<String, byte[]> getImages() {
+        return images;
     }
 }
