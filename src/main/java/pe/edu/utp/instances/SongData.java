@@ -23,7 +23,7 @@ public class SongData {
     public SongData(File file, String title, String artists, String album, String year, Long length) {
         this.fileName = file.getName();
         this.title = title;
-        this.artists = artists.split(":");
+        this.artists = artists.split("/");
         this.album = album;
         this.year = year;
         this.length = length;
@@ -58,10 +58,10 @@ public class SongData {
             AudioFile audioFile = AudioFileIO.read(file);
             Tag tag = audioFile.getTag();
             String title = tag.getFirst(FieldKey.TITLE);
-            String artists = tag.getFirst(FieldKey.ARTISTS);
+            String artists = tag.getFirst(FieldKey.ARTIST);
             String album = tag.getFirst(FieldKey.ALBUM);
             String year = tag.getFirst(FieldKey.YEAR);
-            long length = audioFile.getAudioHeader().getAudioDataLength();
+            long length = audioFile.getAudioHeader().getTrackLength();
             return new SongData(file, title, artists, album, year, length);
         } catch (TagException | CannotReadException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {
             System.out.println("Error on build song data for: " + file.getPath());
