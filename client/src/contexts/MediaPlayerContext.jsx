@@ -5,6 +5,7 @@ const MediaPlayerContext = createContext();
 
 export default function MediaPlayerProvider(props) {
   const [songs, setSongs] = useState([]);
+  const [currentSong, setCurrentSong] = useState(null);
   const [songsData, setSongsData] = useState({
     size: 0,
     date: Date.UTC(),
@@ -28,6 +29,8 @@ export default function MediaPlayerProvider(props) {
     songs,
     setSongs,
     reloadSongs,
+    currentSong,
+    setCurrentSong,
   };
   return (
     <MediaPlayerContext.Provider value={value}>

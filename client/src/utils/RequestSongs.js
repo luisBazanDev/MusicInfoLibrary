@@ -6,7 +6,7 @@ export async function requestSongs() {
     method: "get",
     baseURL: config.api,
   });
-  if (data.status != 200)
+  if (data.status !== 200)
     return {
       size: 0,
       date: Date.UTC(),

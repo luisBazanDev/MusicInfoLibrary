@@ -1,17 +1,32 @@
+import { useContext } from "react";
+import { MediaPlayerContext } from "../contexts/MediaPlayerContext";
+import { GiSoundWaves } from "@react-icons/all-files/gi/GiSoundWaves";
 import config from "../config.json";
 
 function SongListItem({ song, index }) {
+  const context = useContext(MediaPlayerContext);
   const playSong = () => {
     // play song logic
-    console.log(song);
+    context.setCurrentSong(song);
   };
+
+  var isCurrentSong = false;
+  if (context.currentSong !== null) {
+    isCurrentSong = song.fileName === context.currentSong.fileName;
+  }
 
   return (
     <div
-      className="grid grid-cols-12 h-auto border-b-musicplayer_aqua border-b-[1px] py-2"
+      className={`grid grid-cols-12 h-auto border-b-musicplayer_aqua border-b-[1px] py-2 ${
+        isCurrentSong
+          ? "text-musicplayer_high_light bg-musicplayer_darkness_light"
+          : ""
+      }`}
       onClick={playSong}
     >
-      <div className="col-span-1 flex items-center justify-center">{index}</div>
+      <div className="col-span-1 flex items-center justify-center text-sm">
+        {isCurrentSong ? <GiSoundWaves /> : index}
+      </div>
       <div className="col-span-9 grid grid-cols-6">
         <div className="grid-cols-1 flex">
           <img
