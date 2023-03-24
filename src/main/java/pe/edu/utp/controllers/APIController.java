@@ -16,7 +16,7 @@ import java.io.File;
 import java.nio.file.Paths;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class APIController {
     @GetMapping(value = "/api")
     public ApiMessage apiWelcome() {
