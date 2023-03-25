@@ -22,9 +22,9 @@
 - [x] Instalar dependencias, tailwindcss, icons, react etc.
 - [x] Hacer los contextos de react para poder reproducir la musica
 - [ ] Historial de reproduccion para poder usar el modo aleatorio correctamente
-- [ ] Hacer el panel de reproduccion
-  - [ ] Que muestre la data de la cancion que se esta reproduciendo
-  - [ ] Una linea de tiempo con la cual se pueda interactuar para adelantar o retroceder la cancion
+- [x] Hacer el panel de reproduccion
+  - [x] Que muestre la data de la cancion que se esta reproduciendo
+  - [x] Una linea de tiempo con la cual se pueda interactuar para adelantar o retroceder la cancion
   - [ ] Botones de control de la musica (prev, next, random, loop)
 - [x] Hacer el panel que listara las canciones
   - [x] Mostrar la informacion basica de las canciones (title, duration, authors)
