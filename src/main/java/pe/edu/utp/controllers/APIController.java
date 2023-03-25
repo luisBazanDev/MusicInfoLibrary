@@ -3,6 +3,7 @@ package pe.edu.utp.controllers;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,7 +42,14 @@ public class APIController {
 
         if (!file.exists()) return ResponseEntity.notFound().build();
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        headers.add("Access-Control-Allow-Headers", "Content-Type");
+        headers.add("Content-Type", "audio/mpeg");
+
         return ResponseEntity.ok()
+                .headers(headers)
                 .header("Content-Disposition", "attachment; filename=" + fileName)
                 .body(new FileSystemResource(file));
     }
