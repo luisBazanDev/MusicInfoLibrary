@@ -14,6 +14,7 @@
 - [x] Hacer que la api devuelva jsons para las canciones que tenga listadas (/api/list)
 - [x] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/song?name=fileNameHere)
 - [x] Exponer una ruta con las imagenes de los archivos almacenados (/api/image?id=imageId)
+- [ ] Arreglar un bug, cuando el nombre del archivo contiene un "+" en el nombre servidor responde como si no existiera
 
 ### Client
 
