@@ -6,6 +6,15 @@ const MediaPlayerContext = createContext();
 export default function MediaPlayerProvider(props) {
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
+  const [playerSettings, setPlayerSettings] = useState({
+    volume: 100,
+    currentTime: 0,
+    mode: "sequential",
+    paused: false,
+    muted: false,
+    history: [],
+  });
+
   const [songsData, setSongsData] = useState({
     size: 0,
     date: Date.UTC(),
@@ -31,7 +40,10 @@ export default function MediaPlayerProvider(props) {
     reloadSongs,
     currentSong,
     setCurrentSong,
+    playerSettings,
+    setPlayerSettings,
   };
+
   return (
     <MediaPlayerContext.Provider value={value}>
       {props.children}
