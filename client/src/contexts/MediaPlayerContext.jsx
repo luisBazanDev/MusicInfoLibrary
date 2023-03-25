@@ -20,6 +20,19 @@ export default function MediaPlayerProvider(props) {
     date: Date.UTC(),
   });
 
+  const handleTimeUpdate = (time) => {
+    setPlayerSettings({ ...playerSettings, currentTime: time });
+  };
+
+  const handlePaused = (value) => {
+    setPlayerSettings({ ...playerSettings, paused: value });
+  };
+
+  const handleCurrentSong = (value) => {
+    setPlayerSettings({ ...playerSettings, paused: false, currentTime: 0 });
+    setCurrentSong(value);
+  };
+
   useEffect(() => {
     reloadSongs();
   }, []);
@@ -42,6 +55,9 @@ export default function MediaPlayerProvider(props) {
     setCurrentSong,
     playerSettings,
     setPlayerSettings,
+    handleTimeUpdate,
+    handlePaused,
+    handleCurrentSong,
   };
 
   return (

@@ -7,7 +7,7 @@ function SongListItem({ song, index }) {
   const context = useContext(MediaPlayerContext);
   const playSong = () => {
     // play song logic
-    context.setCurrentSong(song);
+    if (!isCurrentSong) context.handleCurrentSong(song);
   };
 
   var isCurrentSong = false;

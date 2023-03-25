@@ -42,6 +42,7 @@ function Volume() {
               type="range"
               min={0}
               max={100}
+              defaultValue={volume}
               onChangeCapture={changeVolume}
             />
           </div>

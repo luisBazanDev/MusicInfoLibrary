@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { MediaPlayerContext } from "../contexts/MediaPlayerContext";
 import SongController from "./controllers/SongController";
+import AudioContainer from "./controllers/AudioContainer";
+import TimeLine from "./controllers/TimeLine";
 import Volume from "./controllers/Volume";
 import config from "../config.json";
 
@@ -17,10 +19,7 @@ function MediaPlayer() {
 
   return (
     <div className="sticky flex flex-col items-center bg-musicplayer_darkness_dark text-musicplayer_high_light text-xs">
-      <audio
-        autoPlay
-        src={config.api + "/api/song?name=" + song.fileName}
-      ></audio>
+      <AudioContainer />
       {/* Mobile data */}
       <div className="block md:hidden">
         <div className="flex justify-center ">
@@ -56,16 +55,7 @@ function MediaPlayer() {
         <SongController />
         <Volume />
       </div>
-      <div className="flex justify-between w-full items-center">
-        <div>02:04</div>
-        <div className="w-full h-1 rounded-lg bg-musicplayer_darkness mx-3">
-          <div
-            id="currentLine"
-            className="w-1/3 bg-musicplayer_high_light h-full"
-          ></div>
-        </div>
-        <div>06:20</div>
-      </div>
+      <TimeLine />
     </div>
   );
 }

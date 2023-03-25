@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { MediaPlayerContext } from "../../contexts/MediaPlayerContext";
 
 // Icons
@@ -9,12 +9,9 @@ import { BiPlay } from "@react-icons/all-files/bi/BiPlay";
 
 function SongController() {
   const context = useContext(MediaPlayerContext);
-  const [paused, setPaused] = useState(context.playerSettings.paused);
 
   const togglePause = () => {
-    const settings = context.playerSettings;
-    settings.paused = !settings.paused;
-    setPaused(settings.paused);
+    context.handlePaused(!context.playerSettings.paused);
   };
 
   return (
@@ -22,7 +19,9 @@ function SongController() {
       <button>
         <BiSkipPrevious />
       </button>
-      <button onClick={togglePause}>{paused ? <BiPlay /> : <BiPause />}</button>
+      <button onClick={togglePause}>
+        {context.playerSettings.paused ? <BiPlay /> : <BiPause />}
+      </button>
       <button>
         <BiSkipNext />
       </button>
