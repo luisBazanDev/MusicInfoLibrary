@@ -36,7 +36,7 @@ public class APIController {
     }
 
     @GetMapping(value = "/api/song")
-    public ResponseEntity<Resource> getSong(@RequestParam(name = "file") String fileName) {
+    public ResponseEntity<Resource> getSong(@RequestParam(name = "name") String fileName) {
         File file = Paths.get(Main.mp3Directory, fileName).toFile();
 
         if (!file.exists()) return ResponseEntity.notFound().build();
