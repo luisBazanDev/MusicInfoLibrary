@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Build App
-        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
-        working-directory: ./client
+      - id: build-publish
+        uses: bitovi/github-actions-react-to-ghp@v1.2.0
+        with:
+          build_command: cd client && npm run build
+          path: dist
