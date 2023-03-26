@@ -31,3 +31,4 @@
   - [x] Enumerar las canciones d el #1 al numero total
   - [x] Poder dar click en alguna y que se reproduzca
 - [ ] Poder usar las flechas del teclado para poder pasar o retroceder una cancion
+- [ ] Cuando se acabe la cancion se reproduzca la siguiente cancion
