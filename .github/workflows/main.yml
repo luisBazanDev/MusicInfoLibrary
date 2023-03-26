@@ -10,42 +10,35 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      # Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      # Checkout project repository
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      # Install Node.js and NPM
-      - name: Install Node.js and NPM
-        uses: actions/setup-node@v2.4.0
+      # Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
-      # Install dependencies and build application
-      - name: Install dependencies and build application
-        run: |
-          cd client
-          npm install
-          npm run build
-  deploy:
-    # Add a dependency to the build job
-    needs: build
+      # Install dependencies
+      - name: Install dependencies
+        run: cd client && npm install
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
+      # Build Application
+      - name: Build application
+        run: cd client && npm run build
 
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Specify runner + deployment step
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      # Deploy to Github Pages
+      - id: deploy
+        name: Deploy to Github Pages
+        uses: fcodelabs/react-deploy-github-pages-action@v1.0.0
+        with:
+          build_dir: client/build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
