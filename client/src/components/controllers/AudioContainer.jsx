@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import { MediaPlayerContext } from "../../contexts/MediaPlayerContext";
 import config from "../../config.json";
 
