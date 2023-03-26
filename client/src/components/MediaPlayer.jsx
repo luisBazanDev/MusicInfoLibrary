@@ -3,6 +3,7 @@ import { MediaPlayerContext } from "../contexts/MediaPlayerContext";
 import SongController from "./controllers/SongController";
 import AudioContainer from "./controllers/AudioContainer";
 import TimeLine from "./controllers/TimeLine";
+import RandomController from "./controllers/RandomController";
 import Volume from "./controllers/Volume";
 import config from "../config.json";
 
@@ -48,10 +49,8 @@ function MediaPlayer() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between w-full text-xl">
-        <div>
-          <button>random</button>
-        </div>
+      <div className="grid grid-cols-3 items-center w-full text-xl px-2">
+        <RandomController />
         <SongController />
         <Volume />
       </div>

@@ -7,12 +7,15 @@ function SongListItem({ song, index }) {
   const context = useContext(MediaPlayerContext);
   const playSong = () => {
     // play song logic
-    if (!isCurrentSong) context.handleCurrentSong(song);
+    if (!isCurrentSong) {
+      context.handleCurrentSong(song);
+      context.handleHistoryAdd(song);
+    }
   };
 
   var isCurrentSong = false;
   if (context.currentSong !== null) {
-    isCurrentSong = song.fileName === context.currentSong.fileName;
+    isCurrentSong = song.songId === context.currentSong.songId;
   }
 
   return (

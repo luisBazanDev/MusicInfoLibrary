@@ -9,11 +9,12 @@ export default function MediaPlayerProvider(props) {
   const [playerSettings, setPlayerSettings] = useState({
     volume: 100,
     currentTime: 0,
-    mode: "sequential",
+    mode: "sequential", // sequential | random
     paused: false,
     muted: false,
     history: [],
   });
+  const [history, setHistory] = useState([]);
 
   const [songsData, setSongsData] = useState({
     size: 0,
@@ -31,6 +32,22 @@ export default function MediaPlayerProvider(props) {
   const handleCurrentSong = (value) => {
     setPlayerSettings({ ...playerSettings, paused: false, currentTime: 0 });
     setCurrentSong(value);
+  };
+
+  const handleHistoryAdd = (newItem) => {
+    setHistory([...history, newItem]);
+  };
+
+  const handleHistoryRemoveLast = () => {
+    history.pop();
+    setHistory(history);
+  };
+
+  const handleMode = (newMode) => {
+    setPlayerSettings({
+      ...playerSettings,
+      mode: newMode,
+    });
   };
 
   useEffect(() => {
@@ -58,6 +75,10 @@ export default function MediaPlayerProvider(props) {
     handleTimeUpdate,
     handlePaused,
     handleCurrentSong,
+    history,
+    handleHistoryAdd,
+    handleHistoryRemoveLast,
+    handleMode,
   };
 
   return (

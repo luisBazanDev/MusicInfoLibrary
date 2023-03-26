@@ -9,7 +9,7 @@ function SongList() {
   return (
     <div className="container flex flex-col w-full bg-musicplayer_darkness text-musicplayer_light text-xs">
       {mediaPlayer.songs.map((song) => (
-        <SongListItem song={song} index={index++} key={song.fileName} />
+        <SongListItem song={song} index={index++} key={song.songId} />
       ))}
     </div>
   );

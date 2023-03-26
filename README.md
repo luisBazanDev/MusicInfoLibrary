@@ -14,14 +14,14 @@
 - [x] Hacer que la api devuelva jsons para las canciones que tenga listadas (/api/list)
 - [x] Exponer una ruta con la carpeta que almacena los archivos mp3 (/api/song?name=fileNameHere)
 - [x] Exponer una ruta con las imagenes de los archivos almacenados (/api/image?id=imageId)
-- [X] Arreglar un bug, cuando el nombre del archivo contiene un "+" en el nombre servidor responde como si no existiera
+- [x] Arreglar un bug, cuando el nombre del archivo contiene un "+" en el nombre servidor responde como si no existiera
 
 ### Client
 
 - [x] Preparar el entorno de desarrollo de la app
 - [x] Instalar dependencias, tailwindcss, icons, react etc.
 - [x] Hacer los contextos de react para poder reproducir la musica
-- [ ] Historial de reproduccion para poder usar el modo aleatorio correctamente
+- [x] Historial de reproduccion para poder usar el modo aleatorio correctamente
 - [x] Hacer el panel de reproduccion
   - [x] Que muestre la data de la cancion que se esta reproduciendo
   - [x] Una linea de tiempo con la cual se pueda interactuar para adelantar o retroceder la cancion

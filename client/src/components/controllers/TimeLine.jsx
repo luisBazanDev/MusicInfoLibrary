@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MediaPlayerContext } from "../../contexts/MediaPlayerContext";
 
 function TimeLine() {

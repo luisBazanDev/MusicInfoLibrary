@@ -39,6 +39,7 @@ function Volume() {
           <div onClick={toggleMuted}>{icon}</div>
           <div>
             <input
+              className="w-full"
               type="range"
               min={0}
               max={100}
