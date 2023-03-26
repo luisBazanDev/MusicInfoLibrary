@@ -5,14 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pe.edu.utp.models.SongData;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 @SpringBootApplication
 public class Main {
     public static String mp3Directory = "C:\\Users\\luisb\\Music\\music-test";
-    private static List<SongData> songs = new ArrayList<>();
+    private static HashMap<String, SongData> songs = new HashMap<>();
     private static HashMap<String, byte[]> images = new HashMap<>();
 
     public static void main(String[] args) {
@@ -25,13 +25,14 @@ public class Main {
         }
         for (final File file : directory.listFiles()) {
             if (!file.getName().endsWith(".mp3")) continue;
-            SongData songData = SongData.BuildSongData(file);
-            if (songData != null) songs.add(songData);
+            String songId = UUID.randomUUID().toString();
+            SongData songData = SongData.BuildSongData(songId, file);
+            if (songData != null) songs.put(songId, songData);
         }
         System.out.println(String.format("Register %s songs.", songs.size()));
     }
 
-    public static List<SongData> getSongs() {
+    public static HashMap<String, SongData> getSongs() {
         return songs;
     }
 

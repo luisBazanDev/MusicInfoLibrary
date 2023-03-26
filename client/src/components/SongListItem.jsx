@@ -31,8 +31,8 @@ function SongListItem({ song, index }) {
         <div className="grid-cols-1 flex">
           <img
             className="object-cover"
-            src={`${config.api}/api/image?id=${song.imgId}`}
-            alt={song.imgId}
+            src={`${config.api}/api/image?id=${song.songId}`}
+            alt={song.songId}
           />
         </div>
         <div className="grid-cols-5 flex flex-col ml-3 justify-center w-40">

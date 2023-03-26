@@ -6,27 +6,30 @@ import pe.edu.utp.Main;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SongData {
+    private String songId;
     private String fileName;
     private String title;
     private String[] artists;
     private String album;
     private String year;
     private Long length;
-    private String imgId;
 
-    public SongData(File file, String title, String artists, String album, String year, Long length, byte[] image) {
+    public SongData(File file, String title, String artists, String album, String year, Long length, byte[] image, String songId) {
+        this.songId = songId;
         this.fileName = file.getName();
         this.title = title;
         this.artists = artists.split("/");
         this.album = album;
         this.year = year;
         this.length = length;
-        this.imgId = UUID.randomUUID().toString();
-        Main.getImages().put(this.imgId, image);
+        Main.getImages().put(songId, image);
+    }
+
+    public String getSongId() {
+        return songId;
     }
 
     public String getFileName() {
@@ -53,11 +56,7 @@ public class SongData {
         return length;
     }
 
-    public String getImgId() {
-        return imgId;
-    }
-
-    public static SongData BuildSongData(File file) {
+    public static SongData BuildSongData(String songId, File file) {
         try {
             Mp3File mp3file = new Mp3File(file);
             ID3v2 id3v2Tag;
@@ -73,7 +72,7 @@ public class SongData {
             String album = id3v2Tag.getAlbum();
             String year = id3v2Tag.getYear();
             long length = mp3file.getLengthInSeconds();
-            return new SongData(file, title, artists, album, year, length, img);
+            return new SongData(file, title, artists, album, year, length, img, songId);
         } catch (IOException | InvalidDataException | UnsupportedTagException e) {
             System.out.println("Error on build song data for: " + file.getPath());
         }

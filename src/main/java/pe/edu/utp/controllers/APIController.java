@@ -28,7 +28,7 @@ public class APIController {
 
     @GetMapping(value = "/api/list")
     public ListSongs listSongs() {
-        return new ListSongs(Main.getSongs());
+        return new ListSongs(Main.getSongs().values().stream().toList());
     }
 
     @GetMapping(value = "/api/*")
@@ -37,8 +37,10 @@ public class APIController {
     }
 
     @GetMapping(value = "/api/song")
-    public ResponseEntity<Resource> getSong(@RequestParam(name = "name") String fileName) {
-        File file = Paths.get(Main.mp3Directory, fileName).toFile();
+    public ResponseEntity<Resource> getSong(@RequestParam(name = "id") String id) {
+        if (Main.getSongs().get(id) == null) return ResponseEntity.notFound().build();
+
+        File file = Paths.get(Main.mp3Directory, Main.getSongs().get(id).getFileName()).toFile();
 
         if (!file.exists()) return ResponseEntity.notFound().build();
 
@@ -50,7 +52,7 @@ public class APIController {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .header("Content-Disposition", "attachment; filename=" + fileName)
+                .header("Content-Disposition", "attachment; filename=" + Main.getSongs().get(id).getFileName())
                 .body(new FileSystemResource(file));
     }
 

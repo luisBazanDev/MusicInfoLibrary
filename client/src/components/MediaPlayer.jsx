@@ -26,8 +26,8 @@ function MediaPlayer() {
           <div className="w-1/3">
             <img
               className="object-cover"
-              src={`${config.api}/api/image?id=${song.imgId}`}
-              alt={song.imgId}
+              src={`${config.api}/api/image?id=${song.songId}`}
+              alt={song.songId}
             />
           </div>
           <div className="flex flex-col mr-4 w-2/3 justify-between items-end py-2">

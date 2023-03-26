@@ -41,7 +41,7 @@ function AudioContainer() {
           <audio
             id="song"
             autoPlay
-            src={`${config.api}/api/song?name=${song.fileName}`}
+            src={`${config.api}/api/song?id=${song.songId}`}
             muted={context.playerSettings.muted}
             onTimeUpdate={handleTimeUpdate}
             onEnded={handleStop}
