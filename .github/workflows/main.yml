@@ -1,0 +1,15 @@
+name: Build React App
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Build App
+        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+        working-directory: ./client
