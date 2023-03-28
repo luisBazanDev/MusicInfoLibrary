@@ -35,9 +35,9 @@ function Volume() {
   return (
     <MediaPlayerContext.Consumer>
       {() => (
-        <div className="flex items-center">
+        <div className="flex items-center justify-end">
           <div onClick={toggleMuted}>{icon}</div>
-          <div>
+          <div className="flex items-center">
             <input
               className="w-full"
               type="range"

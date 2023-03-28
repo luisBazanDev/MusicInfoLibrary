@@ -6,8 +6,10 @@ import MediaPlayer from "./components/MediaPlayer";
 export default function App() {
   return (
     <MediaPlayerProvider>
-      <MediaPlayer />
-      <SongList />
+      <div className="grid grid-cols-1 lg:grid-cols-2 max-w-screen">
+        <MediaPlayer />
+        <SongList />
+      </div>
     </MediaPlayerProvider>
   );
 }

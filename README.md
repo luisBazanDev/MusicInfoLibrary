@@ -26,10 +26,10 @@
 - [x] Hacer el panel de reproduccion
   - [x] Que muestre la data de la cancion que se esta reproduciendo
   - [x] Una linea de tiempo con la cual se pueda interactuar para adelantar o retroceder la cancion
-  - [ ] Botones de control de la musica (prev, next, random, loop)
+  - [x] Botones de control de la musica (prev, next, random, loop)
 - [x] Hacer el panel que listara las canciones
   - [x] Mostrar la informacion basica de las canciones (title, duration, authors)
   - [x] Enumerar las canciones d el #1 al numero total
   - [x] Poder dar click en alguna y que se reproduzca
 - [ ] Poder usar las flechas del teclado para poder pasar o retroceder una cancion
-- [ ] Cuando se acabe la cancion se reproduzca la siguiente cancion
+- [x] Cuando se acabe la cancion se reproduzca la siguiente cancion

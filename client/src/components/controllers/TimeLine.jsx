@@ -10,7 +10,7 @@ function TimeLine() {
           );
         };
         return (
-          <div className="flex justify-between w-full items-center">
+          <div className="flex justify-between w-full items-center my-2 px-2">
             <div>
               {formatTime(Math.round(context.playerSettings.currentTime))}
             </div>

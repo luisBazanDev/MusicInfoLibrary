@@ -19,11 +19,11 @@ function MediaPlayer() {
   const song = context.currentSong;
 
   return (
-    <div className="sticky flex flex-col items-center bg-musicplayer_darkness_dark text-musicplayer_high_light text-xs">
+    <div className="sticky top-0 grid grid-cols-1 items-center bg-musicplayer_darkness_dark text-musicplayer_high_light text-xs max-h-screen md:text-sm md:grid-cols-2 lg:grid-cols-1 lg:text-lg">
       <AudioContainer />
       {/* Mobile data */}
-      <div className="block md:hidden">
-        <div className="flex justify-center ">
+      <div className="block">
+        <div className="flex justify-center">
           <div className="w-1/3">
             <img
               className="object-cover"
@@ -49,12 +49,14 @@ function MediaPlayer() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 items-center w-full text-xl px-2">
-        <RandomController />
-        <SongController />
-        <Volume />
+      <div className="flex flex-col  text-xl px-2 md:text-xl lg:text-3xl lg:px-5">
+        <div className="grid grid-cols-3 items-center">
+          <RandomController />
+          <SongController />
+          <Volume />
+        </div>
+        <TimeLine />
       </div>
-      <TimeLine />
     </div>
   );
 }

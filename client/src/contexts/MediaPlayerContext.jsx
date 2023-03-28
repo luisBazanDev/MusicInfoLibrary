@@ -12,6 +12,7 @@ export default function MediaPlayerProvider(props) {
     mode: "sequential", // sequential | random
     paused: false,
     muted: false,
+    loop: false,
     history: [],
   });
   const [history, setHistory] = useState([]);
@@ -23,6 +24,30 @@ export default function MediaPlayerProvider(props) {
 
   const handleTimeUpdate = (time) => {
     setPlayerSettings({ ...playerSettings, currentTime: time });
+    if (currentSong != null && currentSong.length - time < 1) {
+      handleNextSound();
+    }
+  };
+
+  const handleNextSound = () => {
+    if (playerSettings.loop) {
+      handleTimeUpdate(0);
+      return;
+    }
+    if (playerSettings.mode === "sequential") {
+      const index = songs.indexOf(currentSong);
+      let song = null;
+      if (index === songs.length - 1) {
+        song = songs[0];
+      } else {
+        song = songs[index + 1];
+      }
+      handleHistoryAdd(song);
+      handleCurrentSong(song);
+    } else if (playerSettings.mode === "random") {
+      const song = songs[Math.floor(Math.random() * songs.length)];
+      handleCurrentSong(song);
+    }
   };
 
   const handlePaused = (value) => {
@@ -47,6 +72,12 @@ export default function MediaPlayerProvider(props) {
     setPlayerSettings({
       ...playerSettings,
       mode: newMode,
+    });
+  };
+  const handleLoop = (loop) => {
+    setPlayerSettings({
+      ...playerSettings,
+      loop: loop,
     });
   };
 
@@ -79,6 +110,8 @@ export default function MediaPlayerProvider(props) {
     handleHistoryAdd,
     handleHistoryRemoveLast,
     handleMode,
+    handleNextSound,
+    handleLoop,
   };
 
   return (

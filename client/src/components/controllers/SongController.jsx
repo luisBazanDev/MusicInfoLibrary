@@ -15,21 +15,7 @@ function SongController() {
   };
 
   const handleNext = () => {
-    const songs = context.songs;
-    if (context.playerSettings.mode === "sequential") {
-      const index = songs.indexOf(context.currentSong);
-      let song = null;
-      if (index === songs.length - 1) {
-        song = songs[0];
-      } else {
-        song = songs[index + 1];
-      }
-      context.handleHistoryAdd(song);
-      context.handleCurrentSong(song);
-    } else if (context.playerSettings.mode === "random") {
-      const song = songs[Math.floor(Math.random() * songs.length)];
-      context.handleCurrentSong(song);
-    }
+    context.handleNextSound();
   };
 
   const handlePrev = () => {
