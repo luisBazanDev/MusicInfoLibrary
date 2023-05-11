@@ -4,6 +4,15 @@
 
 - Luis Bazan Rios
 
+## Get starting
+1. Clonar el repositorio
+2. Construir el proyecto con maven con la configuracion `clean` y `install`
+3. Ejecutar el archivo `.jar` generado en la carpeta target, con el comando `java -jar ./MusicInfoLibrary-1.0-SNAPSHOT.jar -r ./music-directory`
+4. Para el cliente, hay que entrar a la carpeta `client/` y tener Nodejs instalado
+5. Instalar las librerias del cliente `npm install`
+6. Para ejecutar un servidor de desarrolo con la interfaz se usa `npm start`
+7. Para construir la interfaz de react se usa `npm build`
+
 ## To Do's
 
 ### Server
