@@ -25,6 +25,7 @@
 - [x] Exponer una ruta con las imagenes de los archivos almacenados (/api/image?id=imageId)
 - [x] Arreglar un bug, cuando el nombre del archivo contiene un "+" en el nombre servidor responde como si no existiera
 - [x] Agregar una forma de especificar el directorio donde estan almacenados los archivos al momento de ejecutar el servidor
+- [x] Exponer una ruta para que el cliente pueda validar la api
 
 ### Client
 

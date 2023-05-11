@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pe.edu.utp.Main;
 import pe.edu.utp.models.SongData;
 import pe.edu.utp.models.api.ApiMessage;
+import pe.edu.utp.models.api.ApiVersion;
 import pe.edu.utp.models.api.ListSongs;
 
 import java.io.File;
@@ -29,6 +30,11 @@ public class APIController {
     @GetMapping(value = "/api/list")
     public ListSongs listSongs() {
         return new ListSongs(Main.getSongs().values().stream().toList());
+    }
+
+    @GetMapping(value = "/api/check")
+    public ApiVersion apiVersion() {
+        return new ApiVersion("1.0", "fldsmdfr");
     }
 
     @GetMapping(value = "/api/*")
